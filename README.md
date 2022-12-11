@@ -10,7 +10,7 @@ some useful tutorials: \
 [tutorials2](https://nakst.gitlab.io/tutorial/clap-part-1.html) 
 
 # How to build
-> clone this repo and navigate into folder then \
+> cd aural-clap \
 > git submodule update --init --recursive \
 > cmake -Bbuild -DCMAKE_BUILD_TYPE=Debug \
 > cmake --build build --config Debug  

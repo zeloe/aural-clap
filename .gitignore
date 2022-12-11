@@ -1,0 +1,9 @@
+**/aural-clap.build
+**/aural-clap.xcodeproj
+**/.DS_Store
+**/build
+**/CmakeFiles
+**/cmake_install.cmake
+**/CmakeScripts
+**/Debug
+**/libs

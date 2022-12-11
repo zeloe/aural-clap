@@ -29,6 +29,7 @@ static const clap_plugin_descriptor_t s_my_plug_desc = {
       NULL
    },
 };
+//define param ids
 enum ParamIDs
 {
     pid_MID = 0,
@@ -48,7 +49,7 @@ typedef struct {
    const clap_host_thread_check_t *hostThreadCheck;
    const clap_host_params_t *hostParams;
    uint32_t latency;
-    
+    //variables
     float mid;
     float side;
     float clip;
@@ -65,6 +66,7 @@ float b1;
 float b2;
 float b [5]  = {0};
 float a [5] = {0};
+//filter coeffs
 void calculateCoeffsFilter (float cutoff,float sampleRate)
 {
              th = 2.0 * M_PI * cutoff / sampleRate;
@@ -75,6 +77,7 @@ void calculateCoeffsFilter (float cutoff,float sampleRate)
              b1 = -g;
              b2 = 0.0;
 }
+//process Filter
 float processFilter(float input)
 {
     b[0] = input;
@@ -133,7 +136,7 @@ static const clap_plugin_latency_t s_my_plug_latency = {
 //////////////////
 // update this to get more plugin parameters in my case 5
 uint32_t clap_param_count(const clap_plugin_t *plugin) { return 5; }
-
+//delcare info
 bool clap_param_get_info(const clap_plugin_t *plugin, uint32_t param_index,
                             clap_param_info_t *param_info)
 {
@@ -200,7 +203,7 @@ bool clap_param_get_info(const clap_plugin_t *plugin, uint32_t param_index,
     }
     return true;
 }
-
+// get value
 bool clap_param_get_value(const clap_plugin_t *plugin, clap_id param_id, double *value)
 {
     my_plug_t *plug = plugin->plugin_data;
@@ -236,6 +239,7 @@ bool clap_param_get_value(const clap_plugin_t *plugin, clap_id param_id, double 
 
     return false;
 }
+//get number
 bool clap_param_value_to_text(const clap_plugin_t *plugin, clap_id param_id, double value,
                                  char *display, uint32_t size)
 {
@@ -485,7 +489,7 @@ static clap_process_status my_plug_process(const struct clap_plugin *plugin,
         float local_current_mix = plug->mix;
         float local_current_cutoff = plug->highpasscutoff;
         float local_current_clip = plug->clip;
-      /* process every samples until the next event */
+      /* process every samples until the next event and only update if there is a parameter change*/
         if(local_current_mid !=  current_mid || local_current_side != current_side || local_current_mix != current_mix || local_current_cutoff != current_cutoff || local_current_clip != current_clip)
         {
             const float increment_mid = (local_current_mid - current_mid) / nframes ;
@@ -520,9 +524,10 @@ static clap_process_status my_plug_process(const struct clap_plugin *plugin,
             current_side = local_current_side;
             current_mix = local_current_mix;
             current_cutoff = local_current_cutoff;
-            current_clip = local_current_clip; 
+            current_clip = local_current_clip;
         }   else
         {
+            // don't do anything
             for (; i < next_ev_frame; ++i)
             {
                 calculateCoeffsFilter(current_cutoff, m_sampleRate);

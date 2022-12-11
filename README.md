@@ -10,11 +10,14 @@ some useful tutorials: \
 [tutorials2](https://nakst.gitlab.io/tutorial/clap-part-1.html) 
 
 # How to build
+> clone this repo and navigate into folder then \
+> git submodule update --init --recursive \
+> cmake -Bbuild -DCMAKE_BUILD_TYPE=Debug \
+> cmake --build build --config Debug  
 
-Make a folder called libs and clone clap library into it. \
-Then open terminal and use cmake -G Xcode (using mac). \
-Build and then run in any daw that supports clap.
+or 
 
+> cmake -G Xcode 
 
 # To Do
 Add Gui

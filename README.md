@@ -11,5 +11,10 @@ some useful tutorials: \
 
 # How to build
 
+Make a folder called libs and clone clap library into it. \
+Then open terminal and use cmake -G Xcode (using mac). \
+Build and then run in any daw that supports clap.
 
 
+# To Do
+Add Gui

@@ -1,5 +1,5 @@
 # aural-clap
-Clap plugin
+Clap plugin with highpass and mid side clipping.
 # Description
 This is an old vst i ported from c++ into c more or less :)
 # Further reading

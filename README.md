@@ -10,14 +10,22 @@ some useful tutorials: \
 [tutorials2](https://nakst.gitlab.io/tutorial/clap-part-1.html) 
 
 # How to build
-> cd aural-clap \
-> git submodule update --init --recursive \
-> cmake -Bbuild -DCMAKE_BUILD_TYPE=Debug \
-> cmake --build build --config Debug  
 
+
+```shell
+git clone https://github.com/zeloe/aural-clap.git
+cd aural-clap
+git submodule update --init --recursive
+cmake -Bbuild -DCMAKE_BUILD_TYPE=Debug
+cmake --build build --config Debug
+```
 or 
-
-> cmake -G Xcode 
-
+```shell
+git clone https://github.com/zeloe/aural-clap.git
+cd aural-clap
+git submodule update --init --recursive
+cmake -Bbuild -DCMAKE_BUILD_TYPE=Release
+cmake --build build --config Release
+```
 # To Do
 Add Gui
